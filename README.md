@@ -10,9 +10,9 @@ in his article, [Nearly All Binary Searches and Merge Sorts are Broken](http://g
 Example
 -------
 
-   var bs = require("binary-search");
-   bs([1, 2, 3, 4], 3, function(a, b) { return a - b; }); // => 2
-   bs([1, 2, 4, 5], 3, function(a, b) { return a - b; }); // => -3
+    var bs = require("binary-search");
+    bs([1, 2, 3, 4], 3, function(a, b) { return a - b; }); // => 2
+    bs([1, 2, 4, 5], 3, function(a, b) { return a - b; }); // => -3
 
 Be advised that passing in a comparator function is *required*. Since you're
 probably using one for your sort function anyway, this isn't a big deal.
