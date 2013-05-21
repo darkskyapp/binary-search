@@ -1,0 +1,17 @@
+{
+  "name": "binarysearch",
+  "version": "1.0.0",
+  "description": "tiny binary search function with comparators",
+  "author": {
+    "name": "The Dark Sky Company, LLC",
+    "email": "support@darkskyapp.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/darkskyapp/pbj.git"
+  },
+  "devDependencies": {
+    "mocha": "1.9.x",
+    "chai": "1.6.x"
+  }
+}
