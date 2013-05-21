@@ -1,5 +1,5 @@
 {
-  "name": "binarysearch",
+  "name": "binary-search",
   "version": "1.0.0",
   "description": "tiny binary search function with comparators",
   "author": {

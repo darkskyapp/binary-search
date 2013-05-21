@@ -1,5 +1,5 @@
-binarysearch
-============
+binary-search
+=============
 
 This is a really tiny, stupid, simple binary search library for Node.JS. We
 wrote it because existing solution were bloated and incorrect.
@@ -10,7 +10,7 @@ in his article, [Nearly All Binary Searches and Merge Sorts are Broken](http://g
 Example
 -------
 
-   var bs = require("binarysearch");
+   var bs = require("binary-search");
    bs([1, 2, 3, 4], 3, function(a, b) { return a - b; }); // => 2
    bs([1, 2, 4, 5], 3, function(a, b) { return a - b; }); // => -3
 
