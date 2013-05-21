@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/darkskyapp/pbj.git"
+    "url": "git://github.com/darkskyapp/binary-search.git"
   },
   "devDependencies": {
     "mocha": "1.9.x",
