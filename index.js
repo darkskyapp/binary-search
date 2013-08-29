@@ -4,7 +4,7 @@ module.exports = function(haystack, needle, comparator) {
       mid, cmp;
 
   while(low <= high) {
-    mid = (low + high) >>> 1;
+    mid = low + ((high - low) / 2);
     cmp = comparator(haystack[mid], needle);
 
     /* Too low. */
