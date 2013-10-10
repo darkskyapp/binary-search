@@ -11,7 +11,9 @@ module.exports = function(haystack, needle, comparator) {
       cmp  = 0;
 
   while(low <= high) {
-    mid = (low + high) >>> 1;
+    /* Note that "(low + high) >>> 1" may overflow, and results in a typecast
+     * to double (which gives the wrong results). */
+    mid = (low + ((high - low) >> 1)) >>> 0;
     cmp = comparator(haystack[mid], needle)|0;
 
     /* Too low. */
