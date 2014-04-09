@@ -1,6 +1,6 @@
 {
   "name": "binary-search",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "tiny binary search function with comparators",
   "author": {
     "name": "The Dark Sky Company, LLC",
