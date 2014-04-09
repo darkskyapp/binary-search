@@ -24,4 +24,12 @@ describe("binarysearch", function() {
   it("should return any valid index if an item exists multiple times in the array", function() {
     expect(bs(arr, 2, cmp)).to.equal(3);
   });
+
+  it("should work even on empty arrays", function() {
+    expect(bs([], 42, cmp)).to.equal(-1);
+  });
+
+  it("should work even on arrays of doubles", function() {
+    expect(bs([0.0, 0.1, 0.2, 0.3, 0.4], 0.25, cmp)).to.equal(-4);
+  });
 });

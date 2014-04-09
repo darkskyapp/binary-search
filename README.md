@@ -7,8 +7,8 @@ wrote it because existing solutions were bloated and incorrect.
 This version is a straight port of the Java version mentioned by Joshua Bloch
 in his article, [Nearly All Binary Searches and Merge Sorts are Broken](http://googleresearch.blogspot.com/2006/06/extra-extra-read-all-about-it-nearly.html).
 
-Thanks to [Conrad Irwin](https://github.com/ConradIrwin) for, ironically,
-pointing out a bug.
+Thanks to [Conrad Irwin](https://github.com/ConradIrwin) and [Michael
+Marino](https://github.com/mgmarino) for, ironically, pointing out bugs.
 
 Example
 -------
