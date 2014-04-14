@@ -1,14 +1,24 @@
-module.exports = function(haystack, needle, comparator) {
-  var low, high, mid, cmp;
+module.exports = function(haystack, needle, comparator, low, high) {
+  var mid, cmp;
 
-  if(!Array.isArray(haystack))
-    throw new TypeError("first argument to binary search is not an array");
+  if(low === undefined)
+    low = 0;
 
-  if(typeof comparator !== "function")
-    throw new TypeError("third argument to binary search is not a function");
+  else {
+    low = low|0;
+    if(low < 0 || low >= haystack.length)
+      throw new RangeError("invalid lower bound");
+  }
 
-  low  = 0;
-  high = haystack.length - 1;
+  if(high === undefined)
+    high = haystack.length - 1;
+
+  else {
+    high = high|0;
+    if(high < low || high >= haystack.length)
+      throw new RangeError("invalid upper bound");
+  }
+
   while(low <= high) {
     /* Note that "(low + high) >>> 1" may overflow, and results in a typecast
      * to double (which gives the wrong results). */
