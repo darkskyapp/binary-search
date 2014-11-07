@@ -26,13 +26,13 @@ module.exports = function(haystack, needle, comparator, low, high) {
     cmp = +comparator(haystack[mid], needle);
 
     /* Too low. */
-    if(cmp < 0.0) 
+    if(cmp < 0.0)
       low  = mid + 1;
 
     /* Too high. */
     else if(cmp > 0.0)
       high = mid - 1;
-    
+
     /* Key found. */
     else
       return mid;
