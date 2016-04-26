@@ -20,6 +20,8 @@ Example
 Be advised that passing in a comparator function is *required*. Since you're
 probably using one for your sort function anyway, this isn't a big deal.
 
+The comparator will also be called with a third argument, the index of the current value. You shouldn't normally need the index, but it's there if you do.
+
 You may also, optionally, specify an input range as the final two parameters,
 in case you want to limit the search to a particular range of inputs. However,
 be advised that this is generally a bad idea (but sometimes bad ideas are
