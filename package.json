@@ -12,7 +12,10 @@
     "url": "git://github.com/darkskyapp/binary-search.git"
   },
   "devDependencies": {
-    "mocha": "1.9.x",
-    "chai": "1.6.x"
+    "chai": "^3.5.0",
+    "mocha": "^2.4.5"
+  },
+  "scripts": {
+    "test": "mocha"
   }
 }
