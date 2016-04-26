@@ -32,4 +32,11 @@ describe("binarysearch", function() {
   it("should work even on arrays of doubles", function() {
     expect(bs([0.0, 0.1, 0.2, 0.3, 0.4], 0.25, cmp)).to.equal(-4);
   });
+
+  it("should pass the index as third parameter to the comparator", function() {
+    var indexes = [],
+        indexCmp = function(a, b, i) { indexes.push(i); return cmp(a, b); };
+    bs(arr, 3, indexCmp);
+    expect(indexes).to.deep.equal([3, 5, 4])
+  });
 });
