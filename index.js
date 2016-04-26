@@ -23,7 +23,7 @@ module.exports = function(haystack, needle, comparator, low, high) {
     /* Note that "(low + high) >>> 1" may overflow, and results in a typecast
      * to double (which gives the wrong results). */
     mid = low + (high - low >> 1);
-    cmp = +comparator(haystack[mid], needle);
+    cmp = +comparator(haystack[mid], needle, mid, haystack);
 
     /* Too low. */
     if(cmp < 0.0)
