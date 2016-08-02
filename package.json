@@ -3,6 +3,7 @@
   "version": "1.3.0",
   "description": "tiny binary search function with comparators",
   "license": "CC0-1.0",
+  "typings": "./binary-search.d.ts",
   "author": {
     "name": "The Dark Sky Company, LLC",
     "email": "support@darkskyapp.com"
