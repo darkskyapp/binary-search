@@ -2,16 +2,20 @@
 //https://github.com/darkskyapp/binary-search
 declare module 'binary-search' {
 
-const enum compareResult {
-  lessThan = -1,
-  greaterThan = 1,
-  same = 0
-}
-
 function binarySearch<A>(
   haystack: A[],
   needle: A,
-  comparator: (a: A, b: A, index?: number, haystack?: A[]) => compareResult,
+  comparator: (a: A, b: A, index?: number, haystack?: A[]) => any,
+  // Notes about comparator return value:
+  // * when a<b the comparator's returned value should be:
+  //   * negative number or a value such that `+value` is a negative number
+  //   * examples: `-1` or the string `"-1"`
+  // * when a>b the comparator's returned value should be:
+  //   * positive number or a value such that `+value` is a positive number
+  //   * examples: `1` or the string `"1"`
+  // * when a===b
+  //    * any value other than the return cases for a<b and a>b
+  //    * examples: undefined, NaN, 'abc'
   low?: number,
   high?: number): number; //returns index of found result or number < 0 if not found
 export = binarySearch;
