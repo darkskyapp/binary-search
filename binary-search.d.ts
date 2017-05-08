@@ -2,10 +2,10 @@
 //https://github.com/darkskyapp/binary-search
 declare module 'binary-search' {
 
-function binarySearch<A>(
+function binarySearch<A, B>(
   haystack: A[],
-  needle: A,
-  comparator: (a: A, b: A, index?: number, haystack?: A[]) => any,
+  needle: B,
+  comparator: (a: A, b: B, index?: number, haystack?: A[]) => any,
   // Notes about comparator return value:
   // * when a<b the comparator's returned value should be:
   //   * negative number or a value such that `+value` is a negative number
