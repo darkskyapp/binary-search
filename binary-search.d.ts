@@ -3,7 +3,7 @@
 declare module 'binary-search' {
 
 function binarySearch<A, B>(
-  haystack: A[],
+  haystack: ArrayLike<A>,
   needle: B,
   comparator: (a: A, b: B, index?: number, haystack?: A[]) => any,
   // Notes about comparator return value:
