@@ -16,26 +16,53 @@ Example
 ```js
 var bs = require("binary-search");
 
-bs([1, 2, 3, 4], 3, function(element, needle) { return element - needle; });
+bs([1, 2, 4, 5], 4, function(element, needle) { return element - needle; });
 // => 2
 
 bs([1, 2, 4, 5], 3, function(element, needle) { return element - needle; });
 // => -3
+
+bs([1, 2, 4, 5], 8, function(element, needle) { return element - needle; });
+// => -5
+
+bs([1, 2, 4, 5], 0, function(element, needle) { return element - needle; });
+// => -1
 ```
 
-Be advised that passing in a comparator function is *required*. Since you're
-probably using one for your sort function anyway, this isn't a big deal.
+Parameters
+----------
 
-The comparator takes a 1st and 2nd argument of element and needle, respectively.
+- `haystack` - an array. `haystack` must already be sorted.
+- `needle` - the value you want to search for.
+- `comparator(element, needle, [index, array])` - compare an element from
+  `haystack` with the `needle`.
+  - Must return a positive number if the `element` is larger than `needle`,
+  - Must return `0` if they are equal, and
+  - Must return  a negative number if `element` is smaller than `needle`.
+  - The comparator function will often be the same function that was used to
+    sort `haystack`. If not, it must rank elements in the same order as the
+    comparator that was used to sort `haystack`.
+  - You shouldn't normally need the index or array to compare values, but they
+    are there if you do.
+- `minimumIndex` - (optional) - the index of the smallest element in `haystack`
+   which should be included in the search. By default this is 0.
+- `maximumIndex` - (optional) - the index of the largest element in `haystack`
+  which should be included in the search. By default this is `haystack.length - 1`
+  - `minimumIndex` and `maximumIndex` let you specify an input range, in case
+     you want to limit the search to a particular range of inputs.
+  - Be advised that this is generally a bad idea.
+  - (But sometimes bad ideas are necessary.)
+  - By default `bs()` will search the entire `haystack`.
 
-The comparator also takes a 3rd and 4th argument, the current index and array,
-respectively. You shouldn't normally need the index or array to compare values,
-but it's there if you do.
+Return values
+-------------
 
-You may also, optionally, specify an input range as the final two parameters,
-in case you want to limit the search to a particular range of inputs. However,
-be advised that this is generally a bad idea (but sometimes bad ideas are
-necessary).
+- If the needle is equal to an element in the haystack, `bs()` will return that element's index.
+- If the needle is smaller than any element of the haystack, `bs()` returns `minimumIndex - 1`.
+  - If you didn't specify `minimumIndex` and `maximumIndex`, the return value will be `-1` in this case.
+- If the needle is larger than any element of the haystack, `bs()` returns `-1 * (largestIndex + 2)`, where `largestIndex` is the index of the last element in the haystack.
+  - If you didn't specify `minimumIndex` and `maximumIndex`, the return value will be `-1 * (haystack.length + 1)`.
+- If the needle is in between two elements of the haystack, `bs()` returns `-1 * (largerIndex + 1)`, where `largerIndex` is the index of the larger or the two elements which the `needle` sits between.
 
 License
 -------
