@@ -20,25 +20,26 @@ module.exports = function(haystack, needle, comparator, low, high) {
   }
 
   while(low <= high) {
-    /* low + high >>> 1 could fail for array lengths > 2**31 because >>>
-     * converts its operands to int32. low - (high - low >>> 1) works for
-     * array lengths < 2**32 which is also Javascript's max array length. */
-    mid = low + (high - low >>> 1);
+    // The naive `low + high >>> 1` could fail for array lengths > 2**31
+    // because `>>>` converts its operands to int32. `low + (high - low >>> 1)`
+    // works for array lengths <= 2**32-1 which is also Javascript's max array
+    // length.
+    mid = low + ((high - low) >>> 1);
     cmp = +comparator(haystack[mid], needle, mid, haystack);
 
-    /* Too low. */
+    // Too low.
     if(cmp < 0.0)
       low  = mid + 1;
 
-    /* Too high. */
+    // Too high.
     else if(cmp > 0.0)
       high = mid - 1;
 
-    /* Key found. */
+    // Key found.
     else
       return mid;
   }
 
-  /* Key not found. */
+  // Key not found.
   return ~low;
 }
