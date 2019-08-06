@@ -20,9 +20,10 @@ module.exports = function(haystack, needle, comparator, low, high) {
   }
 
   while(low <= high) {
-    /* Note that "(low + high) >>> 1" may overflow, and results in a typecast
-     * to double (which gives the wrong results). */
-    mid = low + (high - low >> 1);
+    /* low + high >>> 1 could fail for array lengths > 2**31 because >>>
+     * converts its operands to int32. low - (high - low >>> 1) works for
+     * array lengths < 2**32 which is also Javascript's max array length. */
+    mid = low + (high - low >>> 1);
     cmp = +comparator(haystack[mid], needle, mid, haystack);
 
     /* Too low. */
